@@ -1,19 +1,21 @@
 // src/pages/dashboard.js
 import { useState } from "react";
-import { useLoanStore } from "@lib/store";
-import { useRouter } from "next/router";
+import { useLoanStore } from "@lib/store"; // or "../lib/store" if alias not set
 
 export default function Dashboard() {
-  const router = useRouter();
   const items = useLoanStore((s) => s.transactions);
   const remove = useLoanStore((s) => s.remove);
+  const reset = useLoanStore((s) => s.reset);
 
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
 
   const filteredItems = items.filter((t) => {
     const matchQuery =
-      t.person.toLowerCase().includes(query.toLowerCase()) ||
+      (t.person || "")
+        .toString()
+        .toLowerCase()
+        .includes(query.toLowerCase()) ||
       t.amount.toString().includes(query);
 
     const matchFilter = filter === "all" ? true : t.type === filter;
@@ -25,12 +27,34 @@ export default function Dashboard() {
     <div className="min-h-screen px-6 pt-10 pb-24">
       <h1 className="text-4xl font-bold tracking-tight mb-6">Dashboard</h1>
 
+      {/* RESET ALL DATA */}
+      <button
+        onClick={() => {
+          if (
+            typeof window !== "undefined" &&
+            window.confirm(
+              "⚠️ This will permanently delete ALL transactions.\nAre you sure?"
+            )
+          ) {
+            reset();
+            window.alert("All data has been reset!");
+          }
+        }}
+        className="w-full mb-5 py-3 rounded-xl 
+                   bg-red-600 text-white font-semibold 
+                   shadow-lg hover:bg-red-700 
+                   active:scale-95 transition"
+      >
+        Reset All Data
+      </button>
+
       {/* Search */}
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search by name or amount..."
-        className="w-full mb-4 p-3 rounded-xl bg-white/70 dark:bg-slate-800/70 border border-slate-300 dark:border-slate-700 outline-none"
+        className="w-full mb-4 p-3 rounded-xl bg-white/70 dark:bg-slate-800/70 
+                   border border-slate-300 dark:border-slate-700 outline-none"
       />
 
       {/* Filter buttons */}
@@ -50,11 +74,13 @@ export default function Dashboard() {
         ))}
       </div>
 
+      {/* Transaction list */}
       <div className="space-y-4">
         {filteredItems.map((t) => (
           <div
             key={t.id}
-            className="p-5 rounded-2xl shadow-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-l-8 transition hover:scale-[1.02]"
+            className="p-5 rounded-2xl shadow-xl bg-white/90 dark:bg-slate-900/90 
+                       backdrop-blur-xl border-l-8 transition hover:scale-[1.02]"
             style={{
               borderColor:
                 t.type === "loan"
@@ -84,20 +110,13 @@ export default function Dashboard() {
                   {t.type.toUpperCase()}
                 </span>
 
-                {/* Edit (if you have /edit page wired) */}
-                {/* 
-                <button
-                  onClick={() => router.push(`/edit?id=${t.id}`)}
-                  className="px-3 py-1 rounded-lg bg-indigo-500 text-white text-xs hover:bg-indigo-600"
-                >
-                  Edit
-                </button>
-                */}
-
                 {/* Delete */}
                 <button
                   onClick={() => {
-                    if (confirm("Delete this transaction?")) {
+                    if (
+                      typeof window !== "undefined" &&
+                      window.confirm("Delete this transaction?")
+                    ) {
                       remove(t.id);
                     }
                   }}
@@ -113,6 +132,9 @@ export default function Dashboard() {
             </p>
             <p className="text-slate-400 text-sm">
               Date: {t.date}
+              {t.description && (t.type === "loan" || t.type === "lend") && (
+                <> · {t.description}</>
+              )}
               {t.category && t.type === "expense" && (
                 <> · Category: {t.category}</>
               )}

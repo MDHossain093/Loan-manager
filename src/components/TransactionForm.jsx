@@ -9,16 +9,22 @@ export default function TransactionForm({ type, editData }) {
   const isEdit = Boolean(editData);
 
   const [person, setPerson] = useState(editData?.person || "");
+  const [description, setDescription] = useState(editData?.description || "");
   const [amount, setAmount] = useState(editData?.amount || "");
   const [date, setDate] = useState(editData?.date || "");
   const [category, setCategory] = useState(editData?.category || "Other");
 
   const save = () => {
-    if (!person || !amount || !date) return alert("Fill all fields");
+    // For loan/lend, person is required; for income/expense, either person or description
+    const isLoanOrLend = type === "loan" || type === "lend";
+    if (isLoanOrLend && !person) return alert("Person name is required");
+    if (!isLoanOrLend && !person) return alert("Fill all fields");
+    if (!amount || !date) return alert("Fill all fields");
 
     if (isEdit) {
       update(editData.id, {
         person,
+        description: isLoanOrLend ? description : null,
         amount,
         date,
         category: type === "expense" ? category : null,
@@ -28,6 +34,7 @@ export default function TransactionForm({ type, editData }) {
         id: Date.now(),
         type,
         person,
+        description: isLoanOrLend ? description : null,
         amount,
         date,
         category: type === "expense" ? category : null,
@@ -61,15 +68,31 @@ export default function TransactionForm({ type, editData }) {
 
         {/* Person field */}
         <div>
-          <label className="block text-sm font-medium mb-1">Person / Note</label>
+          <label className="block text-sm font-medium mb-1">
+            {type === "loan" || type === "lend" ? "Person Name" : "Person / Note"}
+          </label>
           <input
             type="text"
             value={person}
             onChange={(e) => setPerson(e.target.value)}
             className="w-full p-3 rounded-xl bg-white/60 dark:bg-slate-800/60 border border-slate-300 dark:border-slate-700 outline-none"
-            placeholder="Name or description"
+            placeholder={type === "loan" || type === "lend" ? "Enter person's name" : "Name or description"}
           />
         </div>
+
+        {/* Description field (ONLY for loan/lend) */}
+        {(type === "loan" || type === "lend") && (
+          <div>
+            <label className="block text-sm font-medium mb-1">Description (Optional)</label>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="w-full p-3 rounded-xl bg-white/60 dark:bg-slate-800/60 border border-slate-300 dark:border-slate-700 outline-none"
+              placeholder="Add notes or details"
+            />
+          </div>
+        )}
 
         {/* Amount */}
         <div>
