@@ -1,21 +1,20 @@
 import withPWA from "next-pwa";
 
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
 
-  // Force Webpack – REQUIRED for next-pwa on Netlify
+  // Force Webpack for Netlify (required for next-pwa)
   webpack: (config) => {
     return config;
   },
 
-  // Disable Turbopack fully
+  // Disable Turbopack completely
   experimental: {
     turbo: false
   }
 };
 
-// Wrap PWA correctly
 export default withPWA({
   dest: "public",
   register: true,
