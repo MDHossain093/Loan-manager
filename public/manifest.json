@@ -1,18 +1,18 @@
 {
-  "name": "Loan Manager",
-  "short_name": "Loans",
+  "name": "CashNex",
+  "short_name": "CashNex",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0A0F1F",
   "theme_color": "#4F46E5",
   "icons": [
     {
-      "src": "/icons/icon-192.png",
+      "src": "/icons/icon192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "/icons/icon512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
