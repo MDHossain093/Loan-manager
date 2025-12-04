@@ -1,14 +1,26 @@
 // src/pages/dashboard.js
 import { useState } from "react";
-import { useLoanStore } from "@lib/store"; // or "../lib/store" if alias not set
+import { useRouter } from "next/router";
+import { useLoanStore } from "@lib/store";
 
 export default function Dashboard() {
+  const router = useRouter();
   const items = useLoanStore((s) => s.transactions);
   const remove = useLoanStore((s) => s.remove);
   const reset = useLoanStore((s) => s.reset);
 
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
+
+  // Calculate totals
+  const totalLoan = items.filter(x => x.type === "loan").reduce((s, x) => s + Number(x.amount), 0);
+  const totalLend = items.filter(x => x.type === "lend").reduce((s, x) => s + Number(x.amount), 0);
+  const totalIncome = items.filter(x => x.type === "income").reduce((s, x) => s + Number(x.amount), 0);
+  const totalExpense = items.filter(x => x.type === "expense").reduce((s, x) => s + Number(x.amount), 0);
+
+  const netLoanLend = totalLend - totalLoan;
+  const netIncomeExpense = totalIncome - totalExpense;
+  const finalNetBalance = netLoanLend + netIncomeExpense;
 
   const filteredItems = items.filter((t) => {
     const matchQuery =
@@ -25,7 +37,47 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen px-6 pt-10 pb-24">
-      <h1 className="text-4xl font-bold tracking-tight mb-6">Dashboard</h1>
+      <h1 className="text-4xl font-extrabold mb-8 tracking-tight bg-gradient-to-r from-indigo-500 to-violet-600 text-transparent bg-clip-text">Dashboard</h1>
+
+      {/* Financial Summary Cards */}
+      <div className="grid grid-cols-2 gap-4 mb-6">
+
+        <div className="p-4 rounded-xl bg-white/70 dark:bg-slate-800/70 shadow">
+          <p className="text-sm text-slate-500 dark:text-slate-400">Total Loan</p>
+          <h2 className="text-xl font-bold text-red-500">৳{totalLoan}</h2>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white/70 dark:bg-slate-800/70 shadow">
+          <p className="text-sm text-slate-500 dark:text-slate-400">Total Lend</p>
+          <h2 className="text-xl font-bold text-green-500">৳{totalLend}</h2>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white/70 dark:bg-slate-800/70 shadow">
+          <p className="text-sm text-slate-500 dark:text-slate-400">Total Income</p>
+          <h2 className="text-xl font-bold text-blue-500">৳{totalIncome}</h2>
+        </div>
+
+        <div className="p-4 rounded-xl bg-white/70 dark:bg-slate-800/70 shadow">
+          <p className="text-sm text-slate-500 dark:text-slate-400">Total Expense</p>
+          <h2 className="text-xl font-bold text-orange-500">৳{totalExpense}</h2>
+        </div>
+
+        <div className="col-span-2 p-4 rounded-xl bg-indigo-600 text-white shadow">
+          <p className="text-sm opacity-80">Net Loan / Lend</p>
+          <h2 className="text-xl font-bold">৳{netLoanLend}</h2>
+        </div>
+
+        <div className="col-span-2 p-4 rounded-xl bg-indigo-700 text-white shadow mt-2">
+          <p className="text-sm opacity-80">Net Income / Expense</p>
+          <h2 className="text-xl font-bold">৳{netIncomeExpense}</h2>
+        </div>
+
+        <div className="col-span-2 p-4 rounded-xl bg-green-600 text-white shadow mt-2">
+          <p className="text-sm opacity-80">Final Net Balance</p>
+          <h2 className="text-2xl font-bold">৳{finalNetBalance}</h2>
+        </div>
+
+      </div>
 
       {/* RESET ALL DATA */}
       <button
@@ -109,6 +161,14 @@ export default function Dashboard() {
                 >
                   {t.type.toUpperCase()}
                 </span>
+
+                {/* Edit */}
+                <button
+                  onClick={() => router.push(`/edit?id=${t.id}`)}
+                  className="px-3 py-1 rounded-lg bg-indigo-500 text-white text-xs hover:bg-indigo-600"
+                >
+                  Edit
+                </button>
 
                 {/* Delete */}
                 <button
