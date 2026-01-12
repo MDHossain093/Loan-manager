@@ -1,155 +1,111 @@
-Here is **clean, copy-paste–ready `README.md` code**.
-Just paste this into a file named **`README.md`** in your GitHub repo 👇
 
-````md
-# 🚀 Next.js Starter Project
 
-![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
-![License](https://img.shields.io/github/license/your-username/your-repo-name)
-![Stars](https://img.shields.io/github/stars/your-username/your-repo-name?style=social)
+# 💰 CashNex (Loan Manager)
 
-A modern **Next.js** project bootstrapped with `create-next-app`, ready for development, deployment, and collaboration.
 
----
 
-## ✨ Features
+![Next.js](https://img.shields.io/badge/Next.js-16.0-black?style=flat&logo=next.js)
 
-- ⚡ Fast development with Next.js
-- 📁 File-based routing
-- 🔌 Built-in API routes
-- 🎨 Optimized fonts with `next/font`
-- 🔄 Hot reload
-- ☁️ Easy deployment on Vercel
+![React](https://img.shields.io/badge/React-18.3-blue?style=flat&logo=react)
 
----
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=flat&logo=tailwind-css)
 
-## 📸 Preview
+![License](https://img.shields.io/badge/License-MIT-green)**CashNex** is a comprehensive personal finance and loan management application built with **Next.js**. It allows users to track their incomes, expenses, loans (borrowed), and lends (given), providing a clear view of their net financial standing.
 
-_Add a screenshot once your UI is ready_
 
-```md
-![App Screenshot](./public/screenshot.png)
-````
 
----
+The app features a modern, glassmorphism-inspired UI, full PWA support, and local data persistence.
 
-## 🛠️ Getting Started
 
-### Install dependencies
 
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
-```
+---## ✨ Key Features* **💸 Complete Transaction Tracking**: Log four distinct types of transactions:    * **Income**: Money coming in.    * **Expense**: Money going out (categorized).    * **Loan**: Money you borrowed from others.    * **Lend**: Money you lent to others.* **📊 Smart Dashboard**: Instantly view your:    * Total Loan vs. Total Lend.    * Net Balance calculations.    * Recent transactions list.* **📈 Reports & Analytics**:    * **Monthly Summary**: Breakdown of finances by month.    * **Category Analysis**: See where your expenses are going.    * **Top Transactions**: Highlight your largest loans, lends, or expenses.* **💾 Local Persistence**: Uses **Zustand** with local storage to keep your data safe on your device without needing a backend.* **📤 Data Export**: Export your entire financial history to **JSON** or **CSV** formats.* **🌙 Dark Mode**: Fully responsive UI with a built-in dark mode toggle.* **📱 PWA Ready**: Installable on mobile devices for a native app-like experience.
 
-### Start development server
 
-```bash
-npm run dev
-```
 
-Open **[http://localhost:3000](http://localhost:3000)** in your browser.
+---## 🛠️ Tech Stack* **Framework**: [Next.js](https://nextjs.org/) (Pages Router)* **Styling**: [Tailwind CSS](https://tailwindcss.com/)* **State Management**: [Zustand](https://github.com/pmndrs/zustand) (with `persist` middleware)* **Icons**: [Heroicons](https://heroicons.com/)* **Animations**: [Framer Motion](https://www.framer.com/motion/)
 
----
 
-## 🧠 Project Structure
 
-```bash
+---## 🚀 Getting Started
+
+
+
+Follow these steps to run the project locally.### Prerequisites* Node.js (v18 or later recommended)* npm, yarn, pnpm, or bun### Installation1.  **Clone the repository:**    ```bash
+
+    git clone [https://github.com/your-username/loan-manager.git](https://github.com/your-username/loan-manager.git)
+
+    cd loan-manager
+
+    ```2.  **Install dependencies:**    ```bash
+
+    npm install
+
+    # or
+
+    yarn install
+
+    ```3.  **Start the development server:**    ```bash
+
+    npm run dev
+
+    ```4.  **Open the app:**    Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+---## 📂 Project Structure```bash
+
 .
-├── pages/
-│   ├── index.js        # Homepage
-│   ├── api/
-│   │   └── hello.js    # API example
-├── public/             # Static assets
-├── styles/             # Global styles
+
+├── lib/
+
+│   └── store.js         # Zustand store for transaction state & logic
+
+├── public/              # Static assets (icons, manifest.json)
+
+├── src/
+
+│   ├── components/      # Reusable UI components (TransactionForm, etc.)
+
+│   ├── hooks/           # Custom hooks (useDarkMode)
+
+│   ├── pages/           # Application routes
+
+│   │   ├── index.js     # Home / Overview
+
+│   │   ├── dashboard.js # Detailed transaction management
+
+│   │   ├── reports.js   # Analytics & Export
+
+│   │   ├── add-*.js     # Pages for adding specific transactions
+
+│   │   └── _app.js      # Global layout wrapper
+
+│   └── styles/          # Global Tailwind CSS styles
+
 └── package.json
-```
 
----
+📸 Usage Guide
 
-## 🧪 API Routes
+Adding Data: Use the "Quick Actions" on the home screen to add a new Loan, Lend, Income, or Expense.
 
-Example endpoint:
+Managing Data: Go to the Dashboard to search, filter, edit, or delete specific transactions.
 
-```
-http://localhost:3000/api/hello
-```
+Exporting: Navigate to the Reports page to download your data as a CSV file for Excel/Google Sheets or a JSON backup.
 
-Edit here:
+Resetting: Need a fresh start? Use the "Reset All Data" button in the Dashboard (Warning: This is irreversible).
 
-```js
-pages/api/hello.js
-```
+🤝 Contributing
 
-API routes run on the server and don’t increase client bundle size.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
----
+Fork the project
 
-## 🎨 Fonts
+Create your feature branch (git checkout -b feature/AmazingFeature)
 
-This project uses **Geist**, automatically optimized with:
+Commit your changes (git commit -m 'Add some AmazingFeature')
 
-```js
-import { Geist } from 'next/font/google'
-```
+Push to the branch (git push origin feature/AmazingFeature)
 
----
+Open a Pull Request
 
-## 🚀 Deployment
+📄 License
 
-Deploy easily using **Vercel**:
-
-1. Push your repo to GitHub
-2. Visit [https://vercel.com/new](https://vercel.com/new)
-3. Import your repository
-4. Click **Deploy**
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome!
-
-```bash
-git checkout -b feature/your-feature
-git commit -m "Add new feature"
-git push origin feature/your-feature
-```
-
-Open a Pull Request 🚀
-
----
-
-## 🧭 Learn More
-
-* [https://nextjs.org/docs](https://nextjs.org/docs)
-* [https://nextjs.org/learn-pages-router](https://nextjs.org/learn-pages-router)
-* [https://github.com/vercel/next.js](https://github.com/vercel/next.js)
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
----
-
-⭐ If you like this project, give it a star!
-
-```
-
-If you want, I can:
-- Customize it for **App Router**
-- Add **GitHub Actions**
-- Make it **portfolio-level**
-- Add **badges dynamically**
-- Write `CONTRIBUTING.md` & `LICENSE`
-
-Just say the word 👌
-```
+This project is licensed under the MIT License - see the LICENSE file for details.
