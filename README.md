@@ -1,40 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# 💰 CashNex (Loan Manager)
+
+
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-16.0-black?style=flat&logo=next.js" />
+  <img src="https://img.shields.io/badge/React-18.3-blue?style=flat&logo=react" />
+  <img src="https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=flat&logo=tailwind-css" />
+  
+</p>
+
+**CashNex** is a comprehensive personal finance and loan management application built with **Next.js**. It allows users to track their incomes, expenses, loans (borrowed), and lends (given), providing a clear view of their net financial standing.
+
+
+
+The app features a modern, glassmorphism-inspired UI, full PWA support, and local data persistence.
+
+
+
+---
+
+## ✨ Key Features* **💸 Complete Transaction Tracking**: Log four distinct types of transactions:    * **Income**: Money coming in.    * **Expense**: Money going out (categorized).    * **Loan**: Money you borrowed from others.    * **Lend**: Money you lent to others.* **📊 Smart Dashboard**: Instantly view your:    * Total Loan vs. Total Lend.    * Net Balance calculations.    * Recent transactions list.* **📈 Reports & Analytics**:    * **Monthly Summary**: Breakdown of finances by month.    * **Category Analysis**: See where your expenses are going.    * **Top Transactions**: Highlight your largest loans, lends, or expenses.* **💾 Local Persistence**: Uses **Zustand** with local storage to keep your data safe on your device without needing a backend.* **📤 Data Export**: Export your entire financial history to **JSON** or **CSV** formats.* **🌙 Dark Mode**: Fully responsive UI with a built-in dark mode toggle.* **📱 PWA Ready**: Installable on mobile devices for a native app-like experience.
+
+
+
+---
+
+## 🛠️ Tech Stack* **Framework**: [Next.js](https://nextjs.org/) (Pages Router)* **Styling**: [Tailwind CSS](https://tailwindcss.com/)* **State Management**: [Zustand](https://github.com/pmndrs/zustand) (with `persist` middleware)* **Icons**: [Heroicons](https://heroicons.com/)* **Animations**: [Framer Motion](https://www.framer.com/motion/)
+
+
+
+---
+
+## 🚀 Getting Started
+
+
+
+Follow these steps to run the project locally.### Prerequisites* Node.js (v18 or later recommended)* npm, yarn, pnpm, or bun### Installation1.  **Clone the repository:**    ```bash
+
+    git clone [https://github.com/your-username/loan-manager.git](https://github.com/your-username/loan-manager.git)
+
+    cd loan-manager
+
+    ```2.  **Install dependencies:**    ```bash
+
+    npm install
+
+    # or
+
+    yarn install
+
+    ```3.  **Start the development server:**    ```bash
+
+    npm run dev
+
+    ```4.  **Open the app:**    Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+.
+├── lib/
+│   └── store.js         # Zustand store for transaction state & logic
+├── public/              # Static assets (icons, manifest.json)
+├── src/
+│   ├── components/      # Reusable UI components (TransactionForm, etc.)
+│   ├── hooks/           # Custom hooks (useDarkMode)
+│   ├── pages/           # Application routes
+│   │   ├── index.js     # Home / Overview
+│   │   ├── dashboard.js # Detailed transaction management
+│   │   ├── reports.js   # Analytics & Export
+│   │   ├── add-*.js     # Pages for adding specific transactions
+│   │   └── _app.js      # Global layout wrapper
+│   └── styles/          # Global Tailwind CSS styles
+└── package.json
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📸 Usage Guide
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Adding Data: Use the "Quick Actions" on the home screen to add a new Loan, Lend, Income, or Expense.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+![App Screenshot](./public/addloan.jpg)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+Managing Data: Go to the Dashboard to search, filter, edit, or delete specific transactions.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![App Screenshot](./public/dashboard.jpg)
 
-## Learn More
+Exporting: Navigate to the Reports page to download your data as a CSV file for Excel/Google Sheets or a JSON backup.
 
-To learn more about Next.js, take a look at the following resources:
+![App Screenshot](./public/report.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+Resetting: Need a fresh start? Use the "Reset All Data" button in the Dashboard (Warning: This is irreversible).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![App Screenshot](./public/reset.jpg)
 
-## Deploy on Vercel
+🤝 Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Fork the project
+
+Create your feature branch (git checkout -b feature/AmazingFeature)
+
+Commit your changes (git commit -m 'Add some AmazingFeature')
+
+Push to the branch (git push origin feature/AmazingFeature)
+
+Open a Pull Request
+
+📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
