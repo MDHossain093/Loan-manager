@@ -21,7 +21,25 @@ The app features a modern, glassmorphism-inspired UI, full PWA support, and loca
 
 ---
 
-## ✨ Key Features* **💸 Complete Transaction Tracking**: Log four distinct types of transactions:    * **Income**: Money coming in.    * **Expense**: Money going out (categorized).    * **Loan**: Money you borrowed from others.    * **Lend**: Money you lent to others.* **📊 Smart Dashboard**: Instantly view your:    * Total Loan vs. Total Lend.    * Net Balance calculations.    * Recent transactions list.* **📈 Reports & Analytics**:    * **Monthly Summary**: Breakdown of finances by month.    * **Category Analysis**: See where your expenses are going.    * **Top Transactions**: Highlight your largest loans, lends, or expenses.* **💾 Local Persistence**: Uses **Zustand** with local storage to keep your data safe on your device without needing a backend.* **📤 Data Export**: Export your entire financial history to **JSON** or **CSV** formats.* **🌙 Dark Mode**: Fully responsive UI with a built-in dark mode toggle.* **📱 PWA Ready**: Installable on mobile devices for a native app-like experience.
+## ✨ Key Features
+
+* **💸 Complete Transaction Tracking**: Log four distinct types of transactions:
+    * **Income**: Money coming in.
+    * **Expense**: Money going out (categorized).
+    * **Loan**: Money you borrowed from others.
+    * **Lend**: Money you lent to others.
+* **📊 Smart Dashboard**: Instantly view your:
+    * Total Loan vs. Total Lend.
+    * Net Balance calculations.
+    * Recent transactions list.
+* **📈 Reports & Analytics**:
+    * **Monthly Summary**: Breakdown of finances by month.
+    * **Category Analysis**: See where your expenses are going.
+    * **Top Transactions**: Highlight your largest loans, lends, or expenses.
+* **💾 Local Persistence**: Uses **Zustand** with local storage to keep your data safe on your device without needing a backend.
+* **📤 Data Export**: Export your entire financial history to **JSON** or **CSV** formats.
+* **🌙 Dark Mode**: Fully responsive UI with a built-in dark mode toggle.
+* **📱 PWA Ready**: Installable on mobile devices for a native app-like experience.
 
 
 
