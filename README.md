@@ -45,36 +45,47 @@ The app features a modern, glassmorphism-inspired UI, full PWA support, and loca
 
 ---
 
-## 🛠️ Tech Stack* **Framework**: [Next.js](https://nextjs.org/) (Pages Router)* **Styling**: [Tailwind CSS](https://tailwindcss.com/)* **State Management**: [Zustand](https://github.com/pmndrs/zustand) (with `persist` middleware)* **Icons**: [Heroicons](https://heroicons.com/)* **Animations**: [Framer Motion](https://www.framer.com/motion/)
+## 🛠️ Tech Stack
 
-
+* **Framework**: [Next.js](https://nextjs.org/) (Pages Router)
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+* **State Management**: [Zustand](https://github.com/pmndrs/zustand) (with `persist` middleware)
+* **Icons**: [Heroicons](https://heroicons.com/)
+* **Animations**: [Framer Motion](https://www.framer.com/motion/)
 
 ---
 
 ## 🚀 Getting Started
 
+Follow these steps to run the project locally.
 
+### Prerequisites
 
-Follow these steps to run the project locally.### Prerequisites* Node.js (v18 or later recommended)* npm, yarn, pnpm, or bun### Installation1.  **Clone the repository:**    ```bash
+* Node.js (v18 or later recommended)
+* npm, yarn, pnpm, or bun
 
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
     git clone [https://github.com/your-username/loan-manager.git](https://github.com/your-username/loan-manager.git)
-
     cd loan-manager
+    ```
 
-    ```2.  **Install dependencies:**    ```bash
-
+2.  **Install dependencies:**
+    ```bash
     npm install
-
     # or
-
     yarn install
+    ```
 
-    ```3.  **Start the development server:**    ```bash
-
+3.  **Start the development server:**
+    ```bash
     npm run dev
+    ```
 
-    ```4.  **Open the app:**    Visit [http://localhost:3000](http://localhost:3000) in your browser.
-
+4.  **Open the app:**
+    Visit [http://localhost:3000](http://localhost:3000) in your browser.
 ---
 
 ## 📂 Project Structure
